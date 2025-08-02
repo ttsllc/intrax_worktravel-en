@@ -17,10 +17,8 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
   <link href="css/flexslider.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="css/common.css" rel="stylesheet">
-  <link href="css/queries.css" rel="stylesheet">
   <link href="css/animate.css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -117,8 +115,31 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center inner">
             <!-- <div class="img-usa"><img src="img/sample/icon_usa.png" alt=""></div> -->
-            <h1 class="animated fadeInDown" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">WORK AND TRAVEL IN THE USA<span></span></h1>
-            <p class="animated fadeInUp delay-05s" style="color: rgba(255,255,255,0.9); text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">An adventure you will cherish while working and exploring American culture</p>
+            <h1 class="animated fadeInDown hero-title" style="
+              color: white; 
+              font-size: 3.5rem; 
+              font-weight: 700; 
+              letter-spacing: 2px; 
+              text-shadow: 2px 2px 4px rgba(0,0,0,0.7); 
+              margin-bottom: 20px;
+              line-height: 1.1;
+            ">
+              WORK AND TRAVEL IN THE USA
+            </h1>
+            <p class="animated fadeInUp delay-05s hero-subtitle" style="
+              color: rgba(255,255,255,0.9); 
+              font-size: 1.2rem; 
+              font-weight: 300; 
+              letter-spacing: 0.5px; 
+              text-shadow: 1px 1px 3px rgba(0,0,0,0.6); 
+              margin-bottom: 30px;
+              line-height: 1.5;
+              max-width: 600px;
+              margin-left: auto;
+              margin-right: auto;
+            ">
+              An adventure you will cherish while working and exploring American culture
+            </p>
           </div>
         </div>
       </div>
@@ -867,15 +888,18 @@ companies who hire university students.
         padding: 20px 0;
       }
       
-      .hero h1 {
-        font-size: 2.5rem !important;
-        line-height: 1.2;
-        margin-bottom: 20px;
+      .hero-title {
+        font-size: 2.2rem !important;
+        line-height: 1.1;
+        margin-bottom: 15px;
+        letter-spacing: 1px !important;
       }
       
-      .hero p {
-        font-size: 1.1rem !important;
+      .hero-subtitle {
+        font-size: 1rem !important;
         line-height: 1.4;
+        letter-spacing: 0.3px !important;
+        padding: 0 20px;
       }
       
       /* Fix hero background images on mobile */
@@ -1272,6 +1296,25 @@ companies who hire university students.
           opacity: 1;
           transform: translateY(0);
         }
+      }
+    }
+    
+    /* Simple hover effects for desktop */
+    @media (min-width: 769px) {
+      .hero-title {
+        transition: all 0.3s ease;
+      }
+      
+      .hero-subtitle {
+        transition: all 0.3s ease;
+      }
+      
+      .hero-title:hover {
+        letter-spacing: 3px;
+      }
+      
+      .hero-subtitle:hover {
+        color: rgba(255,255,255,1) !important;
       }
     }
   </style>
