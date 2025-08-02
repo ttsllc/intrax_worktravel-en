@@ -242,10 +242,12 @@ a:hover, a:focus {
 }
 
 .hero h1 {
-  font-size: 40px;
-  letter-spacing: 6px;
-  margin: 10px;
-  text-align: center;
+  font-size: 40px !important;
+  letter-spacing: 6px !important;
+  margin: 10px auto !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
 }
 
 .hero h1 span {
@@ -254,15 +256,23 @@ a:hover, a:focus {
 }
 
 .hero p {
-  color: #fff;
-  font-size: 1.6em;
-  letter-spacing: 1px;
-  text-align: center;
+  color: #fff !important;
+  font-size: 1.6em !important;
+  letter-spacing: 1px !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  display: block !important;
 }
 
 .inner {
   padding-top: 170px;
-  text-align: center;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
 }
 
 /* ========================================================================== 
