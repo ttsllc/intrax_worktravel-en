@@ -52,8 +52,19 @@ h2::after {
   margin: 25px auto;
 }
 
-h2.arrow {
+h1.arrow {
   font-size: 1.5em;
+  text-transform: uppercase;
+  color: #282828;
+  letter-spacing: 1px;
+  background: url('../img/h1-bg.png') no-repeat center bottom;
+  padding-bottom: 30px;
+  font-weight: bold;
+  text-transform: none;
+}
+
+h2.arrow {
+  font-size: 2.5em;
   text-transform: uppercase;
   color: #282828;
   letter-spacing: 1px;
@@ -534,17 +545,17 @@ ul.social-buttons li:last-child {
     padding: 20px 0;
   }
   
-  .hero-title {
+  .hero h1 {
     font-size: 2.2rem !important;
     line-height: 1.1;
     margin-bottom: 15px;
-    letter-spacing: 1px !important;
+    letter-spacing: 3px !important;
   }
   
-  .hero-subtitle {
-    font-size: 1rem !important;
+  .hero p {
+    font-size: 1.1rem !important;
     line-height: 1.4;
-    letter-spacing: 0.3px !important;
+    letter-spacing: 1px !important;
     padding: 0 20px;
   }
   
@@ -562,19 +573,19 @@ ul.social-buttons li:last-child {
 
 /* Simple hover effects for desktop */
 @media (min-width: 769px) {
-  .hero-title {
+  .hero h1 {
     transition: all 0.3s ease;
   }
   
-  .hero-subtitle {
+  .hero p {
     transition: all 0.3s ease;
   }
   
-  .hero-title:hover {
-    letter-spacing: 3px;
+  .hero h1:hover {
+    letter-spacing: 8px;
   }
   
-  .hero-subtitle:hover {
+  .hero p:hover {
     color: rgba(255,255,255,1) !important;
   }
 }
