@@ -245,6 +245,7 @@ a:hover, a:focus {
   font-size: 40px;
   letter-spacing: 6px;
   margin: 10px;
+  text-align: center;
 }
 
 .hero h1 span {
@@ -256,10 +257,12 @@ a:hover, a:focus {
   color: #fff;
   font-size: 1.6em;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .inner {
   padding-top: 170px;
+  text-align: center;
 }
 
 /* ========================================================================== 
@@ -550,6 +553,7 @@ ul.social-buttons li:last-child {
     line-height: 1.1;
     margin-bottom: 15px;
     letter-spacing: 3px !important;
+    text-align: center !important;
   }
   
   .hero p {
@@ -557,6 +561,7 @@ ul.social-buttons li:last-child {
     line-height: 1.4;
     letter-spacing: 1px !important;
     padding: 0 20px;
+    text-align: center !important;
   }
   
   .section-padding {
