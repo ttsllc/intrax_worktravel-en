@@ -1716,10 +1716,11 @@ companies who hire university students.
           document.body.style.overflow = '';
             
             // 目的のセクションにスムーズスクロール
-            setTimeout(function() {
-              console.log('スクロール開始:', targetId);
-              smoothScrollTo(targetId);
-            }, 100);
+            console.log('スクロール実行前の確認:', targetId);
+            
+            // 即座にスクロール実行
+            console.log('スクロール開始:', targetId);
+            smoothScrollTo(targetId);
           });
         });
       }
@@ -1816,13 +1817,35 @@ companies who hire university students.
       
       // スムーズスクロール
       function smoothScrollTo(targetId) {
+        console.log('smoothScrollTo関数が呼ばれました:', targetId);
+        
         const targetElement = document.querySelector(targetId);
+        console.log('ターゲット要素:', targetElement);
+        
         if (targetElement) {
-          const offsetTop = targetElement.offsetTop - 70;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
+          // 方法1: scrollIntoViewを使用
+          try {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            console.log('scrollIntoViewでスクロール完了');
+          } catch (error) {
+            console.log('scrollIntoViewでエラー、window.scrollToを使用:', error);
+            
+            // 方法2: window.scrollToを使用
+            const offsetTop = targetElement.offsetTop - 70;
+            console.log('スクロール位置:', offsetTop);
+            
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+            
+            console.log('window.scrollToでスクロール完了');
+          }
+        } else {
+          console.error('ターゲット要素が見つかりません:', targetId);
         }
       }
     });
