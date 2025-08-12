@@ -1677,11 +1677,23 @@ companies who hire university students.
             const targetId = this.getAttribute('href');
             console.log('クリックされたリンク:', this.textContent, '->', targetId);
             
-            // メニューを閉じる
-            console.log('メニューを閉じます...');
-            closeMenu();
+            // メニューを即座に閉じる（強制的に）
+            console.log('メニューを即座に閉じます...');
             
-            // 目的のセクションにスムーズスクロール（即座に実行）
+            // メニューを確実に非表示にする
+            menu.style.display = 'none';
+            menu.style.visibility = 'hidden';
+            menu.style.opacity = '0';
+            menu.style.transform = 'translateX(-100%)';
+            menu.style.zIndex = '-1';
+            menu.style.pointerEvents = 'none';
+            
+            // クラスを削除
+            menu.classList.remove('active');
+            menuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // 目的のセクションにスムーズスクロール
             setTimeout(function() {
               console.log('スクロール開始:', targetId);
               smoothScrollTo(targetId);
@@ -1692,6 +1704,46 @@ companies who hire university students.
       
       // 初期設定
       setupMenuEventListeners(menu);
+      
+      // メニューの外側をクリックして閉じる
+      menu.addEventListener('click', function(e) {
+        if (e.target === menu) {
+          console.log('メニューの外側をクリック、閉じます...');
+          
+          // メニューを確実に非表示にする
+          menu.style.display = 'none';
+          menu.style.visibility = 'hidden';
+          menu.style.opacity = '0';
+          menu.style.transform = 'translateX(-100%)';
+          menu.style.zIndex = '-1';
+          menu.style.pointerEvents = 'none';
+          
+          // クラスを削除
+          menu.classList.remove('active');
+          menuBtn.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // ESCキーでメニューを閉じる
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menu.classList.contains('active')) {
+          console.log('ESCキーでメニューを閉じます...');
+          
+          // メニューを確実に非表示にする
+          menu.style.display = 'none';
+          menu.style.visibility = 'hidden';
+          menu.style.opacity = '0';
+          menu.style.transform = 'translateX(-100%)';
+          menu.style.zIndex = '-1';
+          menu.style.pointerEvents = 'none';
+          
+          // クラスを削除
+          menu.classList.remove('active');
+          menuBtn.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
       
       // メニューの開閉切り替え
       function toggleMenu() {
