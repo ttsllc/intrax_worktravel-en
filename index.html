@@ -212,7 +212,7 @@ companies who hire university students.
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 wp1 mb10">
-            <img src="img/sample/icon_applynow.png" alt="" class="icon_apply">
+            <!-- <img src="img/sample/icon_applynow.png" alt="" class="icon_apply"> -->
           <h2 class="arrow text-center">Apply Now!</h2>
         </div>
         <div class="scroll col-md-8 col-md-offset-2 intro-description*">
@@ -1703,18 +1703,14 @@ companies who hire university students.
       // メニューのイベントリスナーを設定する関数
       function setupMenuEventListeners(menuElement) {
         const menuLinks = menuElement.querySelectorAll('a');
-        console.log('メニューリンク数:', menuLinks.length);
         
         menuLinks.forEach(function(link, index) {
-          console.log(`リンク${index + 1}:`, link.textContent, '->', link.getAttribute('href'));
           
           link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            console.log('クリックされたリンク:', this.textContent, '->', targetId);
             
                       // メニューを即座に閉じる（強制的に）
-          console.log('メニューを即座に閉じます...');
           
           // mobile-menuを確実に非表示にする
           menu.style.display = 'none';
@@ -1741,10 +1737,8 @@ companies who hire university students.
           document.body.style.overflow = '';
             
             // 目的のセクションにスムーズスクロール
-            console.log('スクロール実行前の確認:', targetId);
             
             // 即座にスクロール実行
-            console.log('スクロール開始:', targetId);
             smoothScrollTo(targetId);
           });
         });
@@ -1756,7 +1750,6 @@ companies who hire university students.
       // メニューの外側をクリックして閉じる
       menu.addEventListener('click', function(e) {
         if (e.target === menu) {
-          console.log('メニューの外側をクリック、閉じます...');
           
           // メニューを確実に非表示にする
           menu.style.display = 'none';
@@ -1776,7 +1769,6 @@ companies who hire university students.
       // ESCキーでメニューを閉じる
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && menu.classList.contains('active')) {
-          console.log('ESCキーでメニューを閉じます...');
           
           // メニューを確実に非表示にする
           menu.style.display = 'none';
@@ -1851,10 +1843,7 @@ companies who hire university students.
       
       // スムーズスクロール
       function smoothScrollTo(targetId) {
-        console.log('smoothScrollTo関数が呼ばれました:', targetId);
-        
         const targetElement = document.querySelector(targetId);
-        console.log('ターゲット要素:', targetElement);
         
         if (targetElement) {
           // 方法1: scrollIntoViewを使用
@@ -1863,23 +1852,22 @@ companies who hire university students.
               behavior: 'smooth',
               block: 'start'
             });
-            console.log('scrollIntoViewでスクロール完了');
+            // scrollIntoViewでスクロール完了
           } catch (error) {
-            console.log('scrollIntoViewでエラー、window.scrollToを使用:', error);
+            // scrollIntoViewでエラー、window.scrollToを使用
             
             // 方法2: window.scrollToを使用
             const offsetTop = targetElement.offsetTop - 70;
-            console.log('スクロール位置:', offsetTop);
             
             window.scrollTo({
               top: offsetTop,
               behavior: 'smooth'
             });
             
-            console.log('window.scrollToでスクロール完了');
+            // window.scrollToでスクロール完了
           }
         } else {
-          console.error('ターゲット要素が見つかりません:', targetId);
+          // ターゲット要素が見つかりません
         }
       }
     });
