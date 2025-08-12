@@ -1659,29 +1659,34 @@ companies who hire university students.
         toggleMenu();
       });
       
-      // メニューリンクのクリックイベント
-      const menuLinks = menu.querySelectorAll('a');
-      console.log('メニューリンク数:', menuLinks.length);
-      
-      menuLinks.forEach(function(link, index) {
-        console.log(`リンク${index + 1}:`, link.textContent, '->', link.getAttribute('href'));
+      // メニューのイベントリスナーを設定する関数
+      function setupMenuEventListeners(menuElement) {
+        const menuLinks = menuElement.querySelectorAll('a');
+        console.log('メニューリンク数:', menuLinks.length);
         
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          console.log('クリックされたリンク:', this.textContent, '->', targetId);
+        menuLinks.forEach(function(link, index) {
+          console.log(`リンク${index + 1}:`, link.textContent, '->', link.getAttribute('href'));
           
-          // メニューを閉じる
-          console.log('メニューを閉じます...');
-          closeMenu();
-          
-          // 目的のセクションにスムーズスクロール（即座に実行）
-          setTimeout(function() {
-            console.log('スクロール開始:', targetId);
-            smoothScrollTo(targetId);
-          }, 100);
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            console.log('クリックされたリンク:', this.textContent, '->', targetId);
+            
+            // メニューを閉じる
+            console.log('メニューを閉じます...');
+            closeMenu();
+            
+            // 目的のセクションにスムーズスクロール（即座に実行）
+            setTimeout(function() {
+              console.log('スクロール開始:', targetId);
+              smoothScrollTo(targetId);
+            }, 100);
+          });
         });
-      });
+      }
+      
+      // 初期設定
+      setupMenuEventListeners(menu);
       
       // メニューの開閉切り替え
       function toggleMenu() {
@@ -1703,16 +1708,22 @@ companies who hire university students.
       
       // メニューを閉じる
       function closeMenu() {
-        // 即座にCSSプロパティをリセット
-        menu.style.transform = 'translateX(-100%)';
-        menu.style.opacity = '0';
-        menu.style.visibility = 'hidden';
-        menu.style.zIndex = '-1';
+        // メニューを完全に削除して再作成
+        const menuParent = menu.parentNode;
+        const menuClone = menu.cloneNode(true);
         
-        // クラスを削除
-        menu.classList.remove('active');
+        // 元のメニューを削除
+        menuParent.removeChild(menu);
+        
+        // 新しいメニューを追加（初期状態）
+        menuParent.appendChild(menuClone);
+        
+        // ボタンの状態をリセット
         menuBtn.classList.remove('active');
         document.body.style.overflow = '';
+        
+        // 新しいメニューにイベントリスナーを再設定
+        setupMenuEventListeners(menuClone);
       }
       
       // スムーズスクロール
