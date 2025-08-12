@@ -746,7 +746,7 @@ companies who hire university students.
         transform: translateX(-100%);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.4s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1645,43 +1645,99 @@ companies who hire university students.
       
       if (!menuBtn || !menu) return;
       
+      // 初期状態でメニューを閉じる
+      closeMenu();
+      
+      // ハンバーガーメニューボタンのクリックイベント
       menuBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        const isActive = menu.classList.contains('active');
-        
-        if (isActive) {
-          menu.classList.remove('active');
-          menuBtn.classList.remove('active');
-          document.body.style.overflow = '';
-        } else {
-          menu.classList.add('active');
-          menuBtn.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        }
+        toggleMenu();
       });
       
-      // メニューリンクをクリックしたらメニューを閉じる
+      // メニューリンクのクリックイベント
       const menuLinks = menu.querySelectorAll('a');
-      menuLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-          menu.classList.remove('active');
-          menuBtn.classList.remove('active');
-          document.body.style.overflow = '';
+      console.log('メニューリンク数:', menuLinks.length);
+      
+      menuLinks.forEach(function(link, index) {
+        console.log(`リンク${index + 1}:`, link.textContent, '->', link.getAttribute('href'));
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          console.log('クリックされたリンク:', this.textContent, '->', targetId);
+          
+          // メニューを閉じる
+          console.log('メニューを閉じます...');
+          closeMenu();
+          
+          // 目的のセクションにスムーズスクロール（即座に実行）
+          setTimeout(function() {
+            console.log('スクロール開始:', targetId);
+            smoothScrollTo(targetId);
+          }, 100);
         });
       });
-    });
-      // Add scroll event for navbar transparency
-      if (fixedNavbar) {
-        window.addEventListener('scroll', function() {
-          if (window.scrollY > 10) {
-            fixedNavbar.classList.add('scrolled');
-          } else {
-            fixedNavbar.classList.remove('scrolled');
-          }
-        });
+      
+      // メニューの開閉切り替え
+      function toggleMenu() {
+        const isActive = menu.classList.contains('active');
+        if (isActive) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+      
+      // メニューを開く
+      function openMenu() {
+        menu.classList.add('active');
+        menuBtn.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // メニューを閉じる
+      function closeMenu() {
+        // 即座にCSSプロパティをリセット（トランジションなし）
+        menu.style.transition = 'none';
+        menu.style.transform = 'translateX(-100%)';
+        menu.style.opacity = '0';
+        menu.style.visibility = 'hidden';
+        
+        // クラスを削除
+        menu.classList.remove('active');
+        menuBtn.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // トランジションを復活させる
+        setTimeout(function() {
+          menu.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+        }, 50);
+      }
+      
+      // スムーズスクロール
+      function smoothScrollTo(targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const offsetTop = targetElement.offsetTop - 70;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
       }
     });
+    
+    // ナビゲーションバーのスクロール効果
+    const fixedNavbar = document.querySelector('.fixed-navbar');
+    if (fixedNavbar) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 10) {
+          fixedNavbar.classList.add('scrolled');
+        } else {
+          fixedNavbar.classList.remove('scrolled');
+        }
+      });
+    }
 
   </script>
 </body>
