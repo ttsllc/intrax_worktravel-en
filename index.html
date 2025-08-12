@@ -1650,8 +1650,13 @@ companies who hire university students.
       
       if (!menuBtn || !menu) return;
       
-      // 初期状態でメニューを閉じる
-      closeMenu();
+      // 初期状態でメニューを確実に非表示にする
+      menu.style.display = 'none';
+      menu.style.visibility = 'hidden';
+      menu.style.opacity = '0';
+      menu.style.transform = 'translateX(-100%)';
+      menu.style.zIndex = '-1';
+      menu.style.pointerEvents = 'none';
       
       // ハンバーガーメニューボタンのクリックイベント
       menuBtn.addEventListener('click', function(e) {
@@ -1700,30 +1705,39 @@ companies who hire university students.
       
       // メニューを開く
       function openMenu() {
+        // メニューを確実に表示
+        menu.style.display = 'flex';
+        menu.style.visibility = 'visible';
+        menu.style.opacity = '1';
+        menu.style.transform = 'translateX(0)';
+        menu.style.zIndex = '5000';
+        menu.style.pointerEvents = 'auto';
+        
         menu.classList.add('active');
         menuBtn.classList.add('active');
         document.body.style.overflow = 'hidden';
-        menu.style.zIndex = '5000';
       }
       
       // メニューを閉じる
       function closeMenu() {
-        // メニューを完全に削除して再作成
-        const menuParent = menu.parentNode;
-        const menuClone = menu.cloneNode(true);
+        // メニューを完全に無効化
+        menu.style.display = 'none';
+        menu.style.visibility = 'hidden';
+        menu.style.opacity = '0';
+        menu.style.transform = 'translateX(-100%)';
+        menu.style.zIndex = '-1';
+        menu.style.pointerEvents = 'none';
         
-        // 元のメニューを削除
-        menuParent.removeChild(menu);
-        
-        // 新しいメニューを追加（初期状態）
-        menuParent.appendChild(menuClone);
-        
-        // ボタンの状態をリセット
+        // クラスを削除
+        menu.classList.remove('active');
         menuBtn.classList.remove('active');
         document.body.style.overflow = '';
         
-        // 新しいメニューにイベントリスナーを再設定
-        setupMenuEventListeners(menuClone);
+        // 少し遅延してからメニューを再表示可能にする
+        setTimeout(function() {
+          menu.style.display = 'flex';
+          menu.style.pointerEvents = 'auto';
+        }, 500);
       }
       
       // スムーズスクロール
