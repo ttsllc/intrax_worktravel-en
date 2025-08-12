@@ -699,14 +699,14 @@ companies who hire university students.
         z-index: 9999;
         width: 40px;
         height: 40px;
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 12px;
+        background: white;
+        border-radius: 8px;
         cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         transition: all 0.15s ease;
         padding: 8px;
         text-decoration: none;
-        border: 2px solid rgba(11, 11, 80, 0.1);
+        border: 1px solid #e0e0e0;
       }
       
       .nav_slide_button span {
@@ -742,8 +742,8 @@ companies who hire university students.
         width: 100vw;
         height: 100vh;
         z-index: 5000;
-        background: linear-gradient(135deg, rgba(11, 11, 80, 0.98) 0%, rgba(28, 28, 107, 0.95) 100%);
-        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(15px);
         transform: translateX(-100%);
         opacity: 0;
         visibility: hidden;
@@ -755,7 +755,6 @@ companies who hire university students.
         list-style: none;
         padding: 0;
         margin: 0;
-        border-right: 3px solid rgba(28, 201, 173, 0.8);
       }
       
       .mobile-menu.active {
@@ -770,60 +769,43 @@ companies who hire university students.
       }
       
       .mobile-menu li {
-        margin: 25px 0;
+        margin: 20px 0;
         list-style: none;
         text-align: center;
         opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.4s ease forwards;
+        transform: translateY(15px);
+        animation: fadeInUp 0.3s ease forwards;
       }
       
-      .mobile-menu li:nth-child(1) { animation-delay: 0.1s; }
-      .mobile-menu li:nth-child(2) { animation-delay: 0.2s; }
-      .mobile-menu li:nth-child(3) { animation-delay: 0.3s; }
-      .mobile-menu li:nth-child(4) { animation-delay: 0.4s; }
-      .mobile-menu li:nth-child(5) { animation-delay: 0.5s; }
-      .mobile-menu li:nth-child(6) { animation-delay: 0.6s; }
-      .mobile-menu li:nth-child(7) { animation-delay: 0.7s; }
+      .mobile-menu li:nth-child(1) { animation-delay: 0.05s; }
+      .mobile-menu li:nth-child(2) { animation-delay: 0.1s; }
+      .mobile-menu li:nth-child(3) { animation-delay: 0.15s; }
+      .mobile-menu li:nth-child(4) { animation-delay: 0.2s; }
+      .mobile-menu li:nth-child(5) { animation-delay: 0.25s; }
+      .mobile-menu li:nth-child(6) { animation-delay: 0.3s; }
+      .mobile-menu li:nth-child(7) { animation-delay: 0.35s; }
       
       .mobile-menu a {
         display: block;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: white !important;
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #0b0b50 !important;
         text-decoration: none;
-        padding: 20px 40px;
-        border-radius: 15px;
+        padding: 18px 32px;
+        border-radius: 8px;
         transition: all 0.2s ease;
-        min-width: 280px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
+        min-width: 240px;
+        background: transparent;
+        border: 1px solid #e0e0e0;
         position: relative;
-        overflow: hidden;
-      }
-      
-      .mobile-menu a::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(28, 201, 173, 0.3), transparent);
-        transition: left 0.5s ease;
       }
       
       .mobile-menu a:hover {
-        background: rgba(28, 201, 173, 0.2);
-        color: white !important;
-        transform: translateY(-3px) scale(1.02);
-        border-color: rgba(28, 201, 173, 0.6);
-        box-shadow: 0 8px 25px rgba(28, 201, 173, 0.3);
-      }
-      
-      .mobile-menu a:hover::before {
-        left: 100%;
+        background: #f8f9fa;
+        color: #0b0b50 !important;
+        transform: translateY(-2px);
+        border-color: #0b0b50;
+        box-shadow: 0 4px 12px rgba(11, 11, 80, 0.1);
       }
       
       @keyframes fadeInUp {
@@ -1839,7 +1821,7 @@ companies who hire university students.
         menuItems.forEach((item, index) => {
           item.style.animation = 'none';
           setTimeout(() => {
-            item.style.animation = `fadeInUp 0.4s ease ${index * 0.1}s forwards`;
+            item.style.animation = `fadeInUp 0.3s ease ${index * 0.05}s forwards`;
           }, 10);
         });
       }
