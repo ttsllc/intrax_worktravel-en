@@ -1658,6 +1658,17 @@ companies who hire university students.
       menu.style.zIndex = '-1';
       menu.style.pointerEvents = 'none';
       
+      // top-navも初期状態で非表示にする
+      const topNav = document.querySelector('.top-nav');
+      if (topNav) {
+        topNav.style.display = 'none';
+        topNav.style.visibility = 'hidden';
+        topNav.style.opacity = '0';
+        topNav.style.zIndex = '-1';
+        topNav.style.pointerEvents = 'none';
+        topNav.classList.remove('active');
+      }
+      
       // ハンバーガーメニューボタンのクリックイベント
       menuBtn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1677,21 +1688,32 @@ companies who hire university students.
             const targetId = this.getAttribute('href');
             console.log('クリックされたリンク:', this.textContent, '->', targetId);
             
-            // メニューを即座に閉じる（強制的に）
-            console.log('メニューを即座に閉じます...');
-            
-            // メニューを確実に非表示にする
-            menu.style.display = 'none';
-            menu.style.visibility = 'hidden';
-            menu.style.opacity = '0';
-            menu.style.transform = 'translateX(-100%)';
-            menu.style.zIndex = '-1';
-            menu.style.pointerEvents = 'none';
-            
-            // クラスを削除
-            menu.classList.remove('active');
-            menuBtn.classList.remove('active');
-            document.body.style.overflow = '';
+                      // メニューを即座に閉じる（強制的に）
+          console.log('メニューを即座に閉じます...');
+          
+          // mobile-menuを確実に非表示にする
+          menu.style.display = 'none';
+          menu.style.visibility = 'hidden';
+          menu.style.opacity = '0';
+          menu.style.transform = 'translateX(-100%)';
+          menu.style.zIndex = '-1';
+          menu.style.pointerEvents = 'none';
+          
+          // top-navも確実に非表示にする
+          const topNav = document.querySelector('.top-nav');
+          if (topNav) {
+            topNav.style.display = 'none';
+            topNav.style.visibility = 'hidden';
+            topNav.style.opacity = '0';
+            topNav.style.zIndex = '-1';
+            topNav.style.pointerEvents = 'none';
+            topNav.classList.remove('active');
+          }
+          
+          // クラスを削除
+          menu.classList.remove('active');
+          menuBtn.classList.remove('active');
+          document.body.style.overflow = '';
             
             // 目的のセクションにスムーズスクロール
             setTimeout(function() {
