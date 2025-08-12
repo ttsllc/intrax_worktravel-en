@@ -1,0 +1,94 @@
+Xserver
+
+会員ID　　　　： chd23910
+
+パスワード　　： 28qsynnu
+
+インフォパネル： https://www.xserver.ne.jp/login_info.php
+
+フルパス
+/home/intraxjp
+
+☆サクラでのバックアップを自動転送するためのFTP
+
+
+
+
+FTPサーバー(ホスト)名	sv2223.xserver.jp
+sakura-backup@intraxjp.xsrv.jp
+gr6CLVD$#ak%
+
+
+
+☆SSHのパスフレーズ
+babymetal@2018
+
+
+
+エックスサーバーへのSSH接続に必要な情報をまとめておきます。
+
+ホスト名	サーバーID.xsrv.jp（自分の初期ドメイン）　例：sample.xsrv.jp
+ユーザー名	サーバーID　例：sample
+認証方式	公開鍵認証
+接続ポート	10022
+
+
+#kusanagi
+157.7.204.95
+
+#Xserver
+183.90.240.24
+
+#sakura
+49.212.237.18
+
+v=spf1 +ip4:183.90.240.24/24 +ip4:157.7.204.95/24 mx include:spf.autopilothq.com include:sendgrid.net include:v157-7-204-95.rpvx.static.cnode.io inclide:sv2223.xserver.jp ~all
+
+※conoha kusanagi は　157.7.204.95
+
+v=spf1 +ip4:183.90.240.24/24 +ip4:157.7.204.95 mx include:spf.autopilothq.com include:sendgrid.net include:v157-7-204-95.rpvx.static.cnode.io inclide:sv2223.xserver.jp ~all
+
+
+
+v=spf1 +ip4:183.90.240.24/24 +ip4:157.7.204.95/24 mx include:spf.autopilothq.com include:sendgrid.net include:sv2223.xserver.jp ~all
+
+
+
+
+v=spf1 +ip4:183.90.240.24 +ip4:157.7.204.95 include:spf.autopilothq.com include:sendgrid.net include:sv2223.xserver.jp ~all
+
+
+=================================================================
+
+Sakura Internet
+
+サーバコントロールパネル： https://secure.sakura.ad.jp/rscontrol/
+
+ドメイン名      ： intraxjp.sakura.ne.jp
+
+サーバパスワード： 7bkzgm3zf9
+
+
+intraxjp.sakura.ne.jp
+ FTPアカウント	intraxjp
+ 初期フォルダ	www
+
+
+☆サーバーフルパス
+/home/intraxjp/www/intrax-corp/fullpath.php
+
+
+テスト/home/intraxjp/www/hostfamily.ayusajapan.org/fullpath.php
+/home/intraxjp/www/hostfamily.ayusajapan.org
+
+☆IPアドレス
+100.64.0.38
+
+
+
+
+
+
+
+
+
